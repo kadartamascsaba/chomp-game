@@ -1,7 +1,10 @@
 from Tkinter import Tk
 from gui import ChompUI
+from game import Game
 
 if __name__ == '__main__':
-    root = Tk()
-    chomp_ui = ChompUI(root)
-    root.mainloop()
+	game = Game()
+	root = Tk()
+	chomp_ui = ChompUI(root, game)
+
+	root.mainloop()
