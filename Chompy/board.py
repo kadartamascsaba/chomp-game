@@ -16,7 +16,7 @@ class Board:
 		
 		# Initialize board matix
 		self.board       = np.zeros((self.height, self.width), dtype=np.int)
-		self.board[(self.height - 1)][0] = -1
+		self.board[0][0] = -1
 
 	"""
 	Getter and setter functions
