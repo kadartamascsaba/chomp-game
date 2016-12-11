@@ -61,4 +61,5 @@ Example game
      3 | x x x x x x
      
 Game Over! Player 1 won this game!
-    
+
+Source: [Chomp](https://en.wikipedia.org/wiki/Chomp)
