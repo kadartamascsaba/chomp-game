@@ -37,11 +37,11 @@ class Game:
 			self.blocked = False
 
 	# Starting game
-	def start_game(self, width, height):
+	def start_game(self, width, height, depth):
 		self.board = Board(width, height)
 
 		self.player1 = Human(height, width)
-		self.player2 = AI(height, width)
+		self.player2 = AI(height, width, depth)
 
 		# If the random number is smaller than 0.5 then AI player start the game
 		if (random.uniform(0, 1) <= 0.5):

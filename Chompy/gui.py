@@ -4,6 +4,7 @@ from tkMessageBox import *
 # Default constants
 WINDOW_SIZE = 360000
 MAX_SIZE_OF_BOARD = 15
+MAX_DEPTH = 20
 
 # UI class for Chomp Game
 class ChompUI:
@@ -20,6 +21,7 @@ class ChompUI:
 
 		self.width_string_var = StringVar()
 		self.height_string_var = StringVar()
+		self.depth_string_var = StringVar()
 
 		frame = Frame(self.master, width=400, height=100)
 		frame.rowconfigure(0, weight=1)
@@ -29,7 +31,7 @@ class ChompUI:
 		self.title_label = Label(frame, text="Chomp Game", font=("Helvetica", 32))
 		self.title_label.grid(row=0,column=0)
 
-		self.size_label = Label(frame, text="Please add size of Chocolate", font=("Helvetica", 16))
+		self.size_label = Label(frame, text="Please add the parameters", font=("Helvetica", 16))
 		self.size_label.grid(row=1, column=0)
 
 		frame.pack()
@@ -49,11 +51,16 @@ class ChompUI:
 		self.height_entry = Entry(frame, textvariable=self.height_string_var)
 		self.height_entry.grid(row=3, column=1)
 
+		self.depth_label = Label(frame, text="Depth")
+		self.depth_label.grid(row=4, column=0)
+		self.depth_entry = Entry(frame, textvariable=self.depth_string_var)
+		self.depth_entry.grid(row=4, column=1)
+
 		self.start_button = Button(frame, text="Start", command=self.initialize_UI)
-		self.start_button.grid(row=4, column=0)
+		self.start_button.grid(row=5, column=0)
 
 		self.close_button = Button(frame, text="Close", command=self.master.quit)
-		self.close_button.grid(row=4, column=1)
+		self.close_button.grid(row=5, column=1)
 
 		frame.pack()
 
@@ -65,7 +72,7 @@ class ChompUI:
 			self.board = []
 			self.master.configure(background="sienna")
 			self.create_game_board()
-			self.game.start_game(self.width, self.height)
+			self.game.start_game(self.width, self.height, self.depth)
 		else:
 			showinfo("Info", "Bad parameters")
 
@@ -129,8 +136,9 @@ class ChompUI:
 		try:
 			self.width = int(self.width_string_var.get())
 			self.height = int(self.height_string_var.get())
+			self.depth = int(self.depth_string_var.get())
 		except ValueError:
 			return False
-		if self.width in xrange(0, MAX_SIZE_OF_BOARD) and self.height in xrange(0, MAX_SIZE_OF_BOARD):
+		if self.width in xrange(0, MAX_SIZE_OF_BOARD) and self.height in xrange(0, MAX_SIZE_OF_BOARD) and self.depth in xrange(0, MAX_DEPTH):
 			return True
 		return False

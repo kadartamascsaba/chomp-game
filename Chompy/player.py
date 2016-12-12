@@ -13,10 +13,8 @@ class Player:
 	def __init__(self, row, column):
 		self.row = row
 		self.column = column
-		self.search_depth = 5
 
 		self.states = []
-		self.moves = [()]
 
 	# This function check the game is finished or not
 	def is_finished(self, board):
@@ -66,6 +64,14 @@ class Human(Player):
 AI class which implements the Player interface
 """
 class AI(Player):
+
+	def __init__(self, row, column, depth):
+		self.row = row
+		self.column = column
+		self.search_depth = depth
+
+		self.states = []
+		self.moves = [()]
 
 	# This function make a move on board
 	def do_step(self, move):
